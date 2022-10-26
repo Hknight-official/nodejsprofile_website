@@ -8,5 +8,14 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="jquery-3.6.1" level="application" />
+    <orderEntry type="library" name="ee221de0e0" level="application" />
+    <orderEntry type="library" name="animate.css" level="application" />
+    <orderEntry type="library" name="live2dcubismcore" level="application" />
+    <orderEntry type="library" name="pixi-live2d-display" level="application" />
+    <orderEntry type="library" name="pixi.js" level="application" />
+    <orderEntry type="library" name="live2d" level="application" />
+    <orderEntry type="library" name="L2Dwidget" level="application" />
   </component>
 </module>
