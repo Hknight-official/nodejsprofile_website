@@ -7,6 +7,7 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" integrity="sha512-CIYsJUa3pr1eoXlZFroEI0mq0UIMUqNouNinjpCkSWo3Bx5NRlQ0OuC6DtEB/bDqUWnzXc1gs2X/g52l36N5iw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Profile - Hknight</title>
     <style>
         .background-page {
@@ -25,10 +26,12 @@
         .background-light {
             background-image: url('https://innei.ren/assets/new-style/background.png');
             background-color: #ffffff; /* Used if the image is unavailable */
+            filter: blur(1px);
         }
         .background-dark {
             background-image: url('https://innei.ren/assets/new-style/background-night.png');
             background-color: #0e0e0e;
+            filter: blur(1px);
         }
         @media only screen and (max-device-width: 480px) {
             .main-page {
@@ -168,12 +171,12 @@
         @keyframes loading-7 {
             100% { opacity: 0.3; }
         }
-        .spotify-player {
+        .music-player {
             position: fixed;
             left: 1px;
             width: 16%;
             z-index: 10;
-            bottom: -65px;
+            bottom: 0;
             transform: translateX(0);
             transition: transform .5s;
         }
@@ -222,9 +225,11 @@
             </div>
         </nav>
     </header>
-
+    <div id="aplayer"></div>
     <div class="row">
-        <div class="col-lg-3"><iframe class="spotify-player" src="https://open.spotify.com/embed/track/1ko2lVN0vKGUl9zrU0qSlT?utm_source=generator" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"></iframe></div>
+        <div class="col-lg-3">
+
+        </div>
         <div class="col-lg-6 main-page">
             <!--header-->
             <section class="row">
@@ -254,6 +259,7 @@
     </div>
 
 <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js" integrity="sha512-RWosNnDNw8FxHibJqdFRySIswOUgYhFxnmYO3fp+BgCU7gfo4z0oS7mYFBvaa8qu+axY39BmQOrhW3Tp70XbaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script>
 
@@ -365,7 +371,7 @@
                     async function descriptAnimation(stringInsert, waitRead = 1000){
                         let stringInsertList = stringInsert.split('');
                         let num_char = 0;
-                        const clearInsert = await setInterval(async () => {
+                        const clearInsert = setInterval(async () => {
                             $('.text-description').append(stringInsertList[num_char])
                             if (stringInsert.length === num_char) {
                                 return clearInterval(clearInsert);
@@ -404,6 +410,20 @@
                 },100);
             },1100);
         });
+        let aplayerAudioSetting = {
+            container: document.getElementById('aplayer'),
+            lrcType: 3,
+            fixed: true,
+            autoplay: true,
+            audio: [{
+                name: 'すずめ',
+                artist: 'RADWIMPS',
+                url: '/suzume.mp3',
+                cover: '/suzume.png',
+                lrc: '/suzume.lrc'
+            }]
+        };
+        const ap = new APlayer(aplayerAudioSetting);
     </script>
 </body>
 </html>
