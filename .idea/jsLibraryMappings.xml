@@ -2,5 +2,6 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="PROJECT" libraries="{L2Dwidget, animate.css, aplayer, bootstrap, ee221de0e0, jquery-3.6.1}" />
+    <includedPredefinedLibrary name="Node.js Core" />
   </component>
 </project>
