@@ -233,7 +233,52 @@
                 width: 90%;
             }
         }
-    </style>
+
+         .searchbar{
+             margin-bottom: auto;
+             margin-top: auto;
+             height: 60px;
+             background-color: #4a4a4a;
+             border-radius: 30px;
+             padding: 10px;
+             width: 90%;
+         }
+
+        .search_input{
+            color: white;
+            border: 0;
+            outline: 0;
+            background: none;
+            width: 0;
+            caret-color:transparent;
+            line-height: 40px;
+            transition: width 0.4s linear;
+        }
+
+        .searchbar > .search_input{
+            padding: 0 10px;
+            width: 450px;
+            caret-color:red;
+            transition: width 0.4s linear;
+        }
+
+        .searchbar > .search_icon{
+            background: white;
+            color: #e74c3c;
+        }
+
+        .search_icon{
+            height: 40px;
+            width: 40px;
+            float: right;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            color:white;
+            text-decoration:none;
+        }
+   </style>
 
     <script src="https://kit.fontawesome.com/ee221de0e0.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
@@ -304,11 +349,14 @@
                 </div>
             </section>
             <!--end header-->
-            <!--main page-->
-<!--            <section style="padding: 1.2em;">-->
-<!--                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dignissimos fuga minus modi numquam quo ut? Aspernatur dolorum ex itaque iure, laudantium natus nulla quis tempora tempore temporibus. Necessitatibus, reiciendis.-->
-<!--            </section>-->
-            <!--end main page-->
+<!--            main page-->
+            <section style="padding: 1.2em;">
+                <div class="searchbar" style="animation: 1000ms linear 800ms 1 normal both running text-up">
+                    <input class="search_input" id="searchInput" type="text" name="" placeholder="Search website...">
+                    <a href="#" onclick="searchBar()" class="search_icon"><i class="fas fa-search"></i></a>
+                </div>
+            </section>
+<!--            end main page-->
         </div>
         <div class="col-lg-3"></div>
     </div>
@@ -368,32 +416,35 @@
                 setTimeout(function () {
                     $('#hideandshow').show();
                     $('.main-page').show();
-                    L2Dwidget
-                        .init({
-                            model: {
-                                jsonPath: "https://raw.githubusercontent.com/Augu1sto/live2d-widget-models-kasumi-/main/packages/live2d-widget-model-kasumi/assets/kasumi_event128.model.json"
-                            },
-                            display: {
-                                "position": "right",
-                                "width": 220,
-                                "height": 420,
-                                "hOffset": 0,
-                                "vOffset": 0
-                            },
-                            mobile: {
-                                show: true,
-                                scale: 1
-                            },
-                            dialog: {
-                                enable: false,
-                                script: {
-                                    'every idle 10s': '$hitokoto$',
-                                    // 'hover .star': '星星在天上而你在我心里 (*/ω＼*)',
-                                    // 'tap body': '哎呀！别碰我！',
-                                    // 'tap face': '人家已经不是小孩子了！'
+                    if(!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))){
+                        L2Dwidget
+                            .init({
+                                model: {
+                                    jsonPath: "https://raw.githubusercontent.com/Augu1sto/live2d-widget-models-kasumi-/main/packages/live2d-widget-model-kasumi/assets/kasumi_event128.model.json"
+                                },
+                                display: {
+                                    "position": "right",
+                                    "width": 220,
+                                    "height": 420,
+                                    "hOffset": 0,
+                                    "vOffset": 0
+                                },
+                                mobile: {
+                                    show: true,
+                                    scale: 1
+                                },
+                                dialog: {
+                                    enable: false,
+                                    script: {
+                                        'every idle 10s': '$hitokoto$',
+                                        // 'hover .star': '星星在天上而你在我心里 (*/ω＼*)',
+                                        // 'tap body': '哎呀！别碰我！',
+                                        // 'tap face': '人家已经不是小孩子了！'
+                                    }
                                 }
-                            }
-                        });
+                            });
+                    }
+
                     //animation: 500ms linear 0ms 1 normal both running text-up
                     $('.text-description').each(function(){
                         //let words = $(this).text().split(/\s+/);
@@ -484,6 +535,17 @@
             }]
         };
         const ap = new APlayer(aplayerAudioSetting);
+
+
+        function searchBar() {
+            let searchInput = document.getElementById("searchInput").value;
+            location.replace("https://www.google.com/search?q=" + searchInput + "");
+        }
+        $('#searchInput').keydown(function(event){
+            if (event.which === 13){
+            searchBar()
+        }
+        });
     </script>
 </body>
 </html>
