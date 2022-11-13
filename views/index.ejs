@@ -212,6 +212,46 @@
             overflow: hidden;
         }
 
+         .searchbar {
+             margin-bottom: auto;
+             margin-top: auto;
+             height: 60px;
+             background-color: #4a4a4a;
+             border-radius: 30px;
+             padding: 10px;
+             /*width: 90%;*/
+         }
+
+        .search_input{
+            color: white;
+            border: 0;
+            outline: 0;
+            background: none;
+            width: 0;
+            caret-color:transparent;
+            line-height: 40px;
+            transition: width 0.4s linear;
+        }
+
+        .searchbar:hover > .search_input{
+            padding: 0 10px;
+            width: 70%;
+            caret-color:red;
+            transition: width 0.4s linear;
+        }
+
+        .search_icon{
+            height: 40px;
+            width: 40px;
+            float: right;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            color:white;
+            text-decoration:none;
+        }
+
         @media only screen and (max-device-width: 480px) {
             .main-page {
                 padding: 6em 1.8em;
@@ -232,51 +272,6 @@
             .avatar img {
                 width: 90%;
             }
-        }
-
-         .searchbar{
-             margin-bottom: auto;
-             margin-top: auto;
-             height: 60px;
-             background-color: #4a4a4a;
-             border-radius: 30px;
-             padding: 10px;
-             width: 90%;
-         }
-
-        .search_input{
-            color: white;
-            border: 0;
-            outline: 0;
-            background: none;
-            width: 0;
-            caret-color:transparent;
-            line-height: 40px;
-            transition: width 0.4s linear;
-        }
-
-        .searchbar > .search_input{
-            padding: 0 10px;
-            width: 450px;
-            caret-color:red;
-            transition: width 0.4s linear;
-        }
-
-        .searchbar > .search_icon{
-            background: white;
-            color: #e74c3c;
-        }
-
-        .search_icon{
-            height: 40px;
-            width: 40px;
-            float: right;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            color:white;
-            text-decoration:none;
         }
    </style>
 
@@ -352,7 +347,7 @@
 <!--            main page-->
             <section style="padding: 1.2em;">
                 <div class="searchbar" style="animation: 1000ms linear 800ms 1 normal both running text-up">
-                    <input class="search_input" id="searchInput" type="text" name="" placeholder="Search website...">
+                    <input class="search_input" id="searchInput" type="text" name="" placeholder="Search website... (google)">
                     <a href="#" onclick="searchBar()" class="search_icon"><i class="fas fa-search"></i></a>
                 </div>
             </section>
@@ -530,7 +525,7 @@
                 name: 'すずめ',
                 artist: 'RADWIMPS',
                 url: '/music/suzume/main.mp3',
-                cover: '/music/suzume/image.png',
+                cover: '/music/image.png',
                 lrc: '/music/suzume/lyrics.lrc'
             }]
         };
